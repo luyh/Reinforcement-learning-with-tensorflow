@@ -13,6 +13,10 @@ from RL_brain import SarsaTable
 
 def update():
     for episode in range(100):
+        # fresh env
+        env.render()
+        if episode >90:
+            print('debug')
         # initial observation
         observation = env.reset()
 
@@ -20,9 +24,6 @@ def update():
         action = RL.choose_action(str(observation))
 
         while True:
-            # fresh env
-            env.render()
-
             # RL take action and get next observation and reward
             observation_, reward, done = env.step(action)
 
@@ -36,6 +37,8 @@ def update():
             observation = observation_
             action = action_
 
+            # fresh env
+            env.render()
             # break while loop when end of this episode
             if done:
                 break
