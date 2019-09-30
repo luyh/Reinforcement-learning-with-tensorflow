@@ -115,15 +115,15 @@ class Maze(tk.Tk, object):
 
         # reward function
         if s_ == self.canvas.coords(self.oval):
-            reward = 1
+            reward = 10
             done = True
             s_ = 'terminal'
         elif s_ in [self.canvas.coords(self.hell1), self.canvas.coords(self.hell2)]:
-            reward = -1
+            reward = -10
             done = True
             s_ = 'terminal'
         else:
-            reward = 0
+            reward = -1
             done = False
 
         return s_, reward, done
